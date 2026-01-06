@@ -1,0 +1,18 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="600" fill="#1A1F26"/>
+  
+  <!-- Unity circles -->
+  <circle cx="400" cy="300" r="80" fill="none" stroke="#3FB572" stroke-width="4" opacity="0.6"/>
+  <circle cx="600" cy="300" r="80" fill="none" stroke="#F59E0B" stroke-width="4" opacity="0.6"/>
+  <circle cx="800" cy="300" r="80" fill="none" stroke="#3FB572" stroke-width="4" opacity="0.6"/>
+  
+  <!-- Connecting lines -->
+  <line x1="480" y1="300" x2="520" y2="300" stroke="#9CA3AF" stroke-width="3"/>
+  <line x1="680" y1="300" x2="720" y2="300" stroke="#9CA3AF" stroke-width="3"/>
+  
+  <!-- Center hearts -->
+  <path d="M600 260 L620 280 L600 300 L580 280 Z" fill="#F59E0B" opacity="0.8"/>
+  
+  <text x="600" y="480" font-family="Arial" font-size="42" fill="#3FB572" text-anchor="middle" font-weight="bold">Unity in Action</text>
+  <text x="600" y="520" font-family="Arial" font-size="22" fill="#9CA3AF" text-anchor="middle">ECCA Ni Home</text>
+</svg>

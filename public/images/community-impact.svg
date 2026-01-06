@@ -1,0 +1,28 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0F1419"/>
+  <circle cx="300" cy="200" r="150" fill="#3FB572" opacity="0.1"/>
+  <circle cx="900" cy="600" r="200" fill="#F59E0B" opacity="0.1"/>
+  
+  <!-- Trees -->
+  <path d="M200 400 L220 450 L200 500 L180 450 Z" fill="#3FB572" opacity="0.6"/>
+  <rect x="195" y="500" width="10" height="50" fill="#78350F" opacity="0.6"/>
+  
+  <path d="M350 450 L370 500 L350 550 L330 500 Z" fill="#3FB572" opacity="0.6"/>
+  <rect x="345" y="550" width="10" height="50" fill="#78350F" opacity="0.6"/>
+  
+  <path d="M500 380 L520 430 L500 480 L480 430 Z" fill="#3FB572" opacity="0.6"/>
+  <rect x="495" y="480" width="10" height="50" fill="#78350F" opacity="0.6"/>
+  
+  <!-- People silhouettes -->
+  <circle cx="700" cy="350" r="30" fill="#F59E0B" opacity="0.5"/>
+  <rect x="680" y="380" width="40" height="60" rx="8" fill="#F59E0B" opacity="0.5"/>
+  
+  <circle cx="800" cy="350" r="30" fill="#F59E0B" opacity="0.5"/>
+  <rect x="780" y="380" width="40" height="60" rx="8" fill="#F59E0B" opacity="0.5"/>
+  
+  <circle cx="900" cy="350" r="30" fill="#F59E0B" opacity="0.5"/>
+  <rect x="880" y="380" width="40" height="60" rx="8" fill="#F59E0B" opacity="0.5"/>
+  
+  <text x="600" y="700" font-family="Arial" font-size="48" fill="#3FB572" text-anchor="middle" font-weight="bold">Community Impact</text>
+  <text x="600" y="750" font-family="Arial" font-size="24" fill="#9CA3AF" text-anchor="middle">Making a Difference Together</text>
+</svg>

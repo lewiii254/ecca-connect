@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Users, MapPin, Mail, Phone, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { MapPin, Mail, Phone, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import eccaLogo from "@/assets/ecca-logo.jpg";
 
 const Footer = () => {
   return (
@@ -9,9 +10,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center group-hover:shadow-glow-green transition-all duration-300">
-                <Users className="w-6 h-6 text-primary-foreground" />
-              </div>
+              <img 
+                src={eccaLogo} 
+                alt="ECCA Logo" 
+                className="w-12 h-12 rounded-full object-cover group-hover:shadow-glow-green transition-all duration-300"
+              />
               <div>
                 <span className="font-display font-bold text-xl text-foreground">ECCA</span>
                 <span className="text-sm text-primary block -mt-1">Ni Home</span>
@@ -19,6 +22,9 @@ const Footer = () => {
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Empowering Embu County youth through unity, leadership, and community development.
+            </p>
+            <p className="text-xs text-primary font-medium italic">
+              "Growth, Unity, Loyalty Above All Else"
             </p>
           </div>
 
@@ -62,21 +68,36 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold text-foreground mb-4">Follow Us</h4>
             <div className="flex gap-3">
-              {[
-                { icon: Facebook, label: "Facebook" },
-                { icon: Twitter, label: "Twitter" },
-                { icon: Instagram, label: "Instagram" },
-                { icon: Youtube, label: "YouTube" },
-              ].map(({ icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              <a
+                href="https://www.facebook.com/ECCA014/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
               Join our community and stay updated with ECCA activities.

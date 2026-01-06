@@ -4,14 +4,14 @@ import { Quote } from "lucide-react";
 
 const Leadership = () => {
   const leaders = [
-    { name: "John Mwangi", role: "Chairperson" },
-    { name: "Grace Wanjiku", role: "Vice Chairperson" },
-    { name: "Peter Njeru", role: "Secretary General" },
-    { name: "Faith Wambui", role: "Treasurer" },
-    { name: "David Muthomi", role: "Organizing Secretary" },
-    { name: "Mary Njoki", role: "Communications Director" },
-    { name: "James Kariuki", role: "Youth Coordinator" },
-    { name: "Sarah Muthoni", role: "Environmental Lead" },
+    { name: "John Mwangi", role: "Chairperson", image: "/images/leader-placeholder.svg" },
+    { name: "Grace Wanjiku", role: "Vice Chairperson", image: "/images/leader-placeholder.svg" },
+    { name: "Peter Njeru", role: "Secretary General", image: "/images/leader-placeholder.svg" },
+    { name: "Faith Wambui", role: "Treasurer", image: "/images/leader-placeholder.svg" },
+    { name: "David Muthomi", role: "Organizing Secretary", image: "/images/leader-placeholder.svg" },
+    { name: "Mary Njoki", role: "Communications Director", image: "/images/leader-placeholder.svg" },
+    { name: "James Kariuki", role: "Youth Coordinator", image: "/images/leader-placeholder.svg" },
+    { name: "Sarah Muthoni", role: "Environmental Lead", image: "/images/leader-placeholder.svg" },
   ];
 
   return (

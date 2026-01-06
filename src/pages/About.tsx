@@ -81,14 +81,24 @@ const About = () => {
 
             {/* Visual Card */}
             <div className="relative animate-fade-up stagger-2" style={{ opacity: 0, animationFillMode: "forwards" }}>
-              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-border p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 mx-auto rounded-2xl bg-primary/20 flex items-center justify-center mb-6 animate-float">
-                    <Users className="w-12 h-12 text-primary" />
+              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-border overflow-hidden relative">
+                <div className="absolute inset-0 opacity-20">
+                  <img 
+                    src="/images/unity-banner.svg" 
+                    alt="Unity"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative z-10 p-8 flex items-center justify-center h-full">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto rounded-2xl bg-primary/20 flex items-center justify-center mb-6 animate-float backdrop-blur-sm">
+                      <Users className="w-12 h-12 text-primary" />
+                    </div>
+                    <p className="font-display text-3xl font-bold text-foreground mb-2">ECCA</p>
+                    <p className="text-secondary font-semibold">Ni Home</p>
+                    <p className="text-xs text-primary font-medium italic mt-2">"Growth, Unity, Loyalty Above All Else"</p>
+                    <p className="text-muted-foreground text-sm mt-4">Established 2020</p>
                   </div>
-                  <p className="font-display text-3xl font-bold text-foreground mb-2">ECCA</p>
-                  <p className="text-secondary font-semibold">Ni Home</p>
-                  <p className="text-muted-foreground text-sm mt-4">Established 2020</p>
                 </div>
               </div>
               <div className="absolute -top-4 -right-4 w-20 h-20 rounded-xl bg-primary/10 border border-primary/20 -z-10" />
