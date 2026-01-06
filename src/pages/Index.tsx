@@ -74,6 +74,16 @@ const Index = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-hero" />
+        
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="/images/hero-bg.svg" 
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1s" }} />
         
@@ -104,6 +114,11 @@ const Index = () => {
             {/* Tagline */}
             <p className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-secondary mb-6 animate-fade-up stagger-2">
               ECCA Ni Home
+            </p>
+
+            {/* Motto */}
+            <p className="text-lg font-display font-medium text-primary mb-4 animate-fade-up stagger-2">
+              "Growth, Unity, Loyalty Above All Else"
             </p>
 
             {/* Description */}
@@ -210,10 +225,17 @@ const Index = () => {
 
             {/* Visual */}
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border overflow-hidden">
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border overflow-hidden relative">
+                <div className="absolute inset-0 opacity-30">
+                  <img 
+                    src="/images/community-impact.svg" 
+                    alt="Community Impact"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-6 animate-float">
+                  <div className="text-center relative z-10">
+                    <div className="w-32 h-32 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-6 animate-float backdrop-blur-sm">
                       <Users className="w-16 h-16 text-primary" />
                     </div>
                     <p className="font-display text-2xl font-bold text-foreground">ECCA Ni Home</p>

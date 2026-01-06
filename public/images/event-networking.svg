@@ -1,0 +1,13 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#1A1F26"/>
+  <circle cx="300" cy="200" r="100" fill="url(#night-gradient)" opacity="0.4"/>
+  <circle cx="320" cy="160" r="15" fill="#F59E0B"/>
+  <path d="M250 220 Q270 200 290 220 Q310 200 330 220 Q350 200 370 220" stroke="#F59E0B" stroke-width="3" fill="none"/>
+  <text x="300" y="360" font-family="Arial" font-size="24" fill="#F59E0B" text-anchor="middle" font-weight="bold">Networking Night</text>
+  <defs>
+    <radialGradient id="night-gradient">
+      <stop offset="0%" stop-color="#4C1D95"/>
+      <stop offset="100%" stop-color="#1A1F26"/>
+    </radialGradient>
+  </defs>
+</svg>

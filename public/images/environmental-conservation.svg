@@ -1,0 +1,9 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1A1F26"/>
+  <circle cx="400" cy="280" r="120" fill="#3FB572" opacity="0.2"/>
+  <path d="M400 200 L420 240 L400 280 L380 240 Z" fill="#3FB572" opacity="0.8"/>
+  <path d="M400 240 L440 280 L400 320 L360 280 Z" fill="#3FB572" opacity="0.6"/>
+  <rect x="390" y="320" width="20" height="60" fill="#78350F" opacity="0.8"/>
+  <text x="400" y="450" font-family="Arial" font-size="32" fill="#3FB572" text-anchor="middle" font-weight="bold">Environmental Action</text>
+  <text x="400" y="490" font-family="Arial" font-size="18" fill="#9CA3AF" text-anchor="middle">Planting Trees for the Future</text>
+</svg>
