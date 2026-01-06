@@ -1,0 +1,10 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1A1F26"/>
+  <circle cx="400" cy="250" r="80" fill="#F59E0B" opacity="0.3"/>
+  <circle cx="300" cy="320" r="50" fill="#F59E0B" opacity="0.5"/>
+  <circle cx="500" cy="320" r="50" fill="#F59E0B" opacity="0.5"/>
+  <line x1="400" y1="280" x2="330" y2="300" stroke="#F59E0B" stroke-width="3"/>
+  <line x1="400" y1="280" x2="470" y2="300" stroke="#F59E0B" stroke-width="3"/>
+  <text x="400" y="450" font-family="Arial" font-size="32" fill="#F59E0B" text-anchor="middle" font-weight="bold">Leadership & Networking</text>
+  <text x="400" y="490" font-family="Arial" font-size="18" fill="#9CA3AF" text-anchor="middle">Connecting Future Leaders</text>
+</svg>

@@ -10,6 +10,7 @@ const Activities = () => {
       description: "We connect young people with industry professionals and mentors who guide them in their career paths. Our forums feature successful professionals sharing insights and opportunities.",
       highlights: ["Career guidance sessions", "CV writing workshops", "Interview preparation", "Industry networking"],
       variant: "green" as const,
+      image: "/images/youth-empowerment.svg",
     },
     {
       icon: TreePine,
@@ -17,6 +18,7 @@ const Activities = () => {
       description: "ECCA leads the charge in environmental sustainability through tree planting initiatives, clean-up campaigns, and awareness programs about climate action.",
       highlights: ["Tree planting drives", "River clean-up campaigns", "Environmental education", "Sustainability workshops"],
       variant: "green" as const,
+      image: "/images/environmental-conservation.svg",
     },
     {
       icon: Users,
@@ -24,6 +26,7 @@ const Activities = () => {
       description: "We actively participate in community development through outreach programs, charity events, and partnerships with local organizations.",
       highlights: ["Community outreach", "Charity initiatives", "Youth forums", "Local partnerships"],
       variant: "orange" as const,
+      image: "/images/community-development.svg",
     },
     {
       icon: PartyPopper,
@@ -31,6 +34,7 @@ const Activities = () => {
       description: "From the annual ECCA Gala to Comrades Nights, we create spaces for youth to connect, celebrate, and build lasting friendships.",
       highlights: ["Annual ECCA Gala", "Comrades Nights", "Sports tournaments", "Cultural celebrations"],
       variant: "orange" as const,
+      image: "/images/leadership-networking.svg",
     },
     {
       icon: Megaphone,
@@ -38,6 +42,7 @@ const Activities = () => {
       description: "We amplify youth voices on issues that matter — from education policy to mental health awareness — ensuring young people are heard.",
       highlights: ["Policy advocacy", "Mental health awareness", "Youth rights campaigns", "Educational forums"],
       variant: "green" as const,
+      image: "/images/youth-empowerment.svg",
     },
     {
       icon: Briefcase,
@@ -45,6 +50,7 @@ const Activities = () => {
       description: "Through workshops and training programs, we equip young people with practical skills that enhance their employability and entrepreneurial potential.",
       highlights: ["Digital skills training", "Entrepreneurship workshops", "Financial literacy", "Leadership training"],
       variant: "orange" as const,
+      image: "/images/community-development.svg",
     },
   ];
 
@@ -85,22 +91,30 @@ const Activities = () => {
                 style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
               >
                 <div className="grid md:grid-cols-[1fr,1.5fr] gap-6">
-                  {/* Icon Section */}
+                  {/* Image/Icon Section */}
                   <div className={cn(
-                    "p-8 md:p-12 flex flex-col items-center justify-center text-center",
+                    "p-8 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden",
                     activity.variant === "green" 
                       ? "bg-gradient-to-br from-primary/10 to-primary/5" 
                       : "bg-gradient-to-br from-secondary/10 to-secondary/5"
                   )}>
+                    {/* Background Image */}
+                    <div className="absolute inset-0 opacity-30">
+                      <img 
+                        src={activity.image} 
+                        alt={activity.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                     <div className={cn(
-                      "w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300",
+                      "relative z-10 w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300",
                       activity.variant === "green"
                         ? "bg-primary/20 text-primary group-hover:bg-primary group-hover:text-primary-foreground"
                         : "bg-secondary/20 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground"
                     )}>
                       <activity.icon className="w-10 h-10" />
                     </div>
-                    <h3 className="font-display text-xl font-bold text-foreground">
+                    <h3 className="relative z-10 font-display text-xl font-bold text-foreground">
                       {activity.title}
                     </h3>
                   </div>

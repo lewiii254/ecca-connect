@@ -54,6 +54,8 @@ export default {
         ecca: {
           green: "hsl(var(--ecca-green))",
           "green-glow": "hsl(var(--ecca-green-glow))",
+          gold: "hsl(var(--ecca-gold))",
+          "gold-glow": "hsl(var(--ecca-gold-glow))",
           orange: "hsl(var(--ecca-orange))",
           "orange-glow": "hsl(var(--ecca-orange-glow))",
           dark: "hsl(var(--ecca-dark))",

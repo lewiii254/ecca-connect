@@ -1,0 +1,7 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1A1F26"/>
+  <circle cx="400" cy="300" r="150" fill="#3FB572" opacity="0.2"/>
+  <path d="M400 200 L450 250 L400 300 L350 250 Z" fill="#3FB572" opacity="0.6"/>
+  <text x="400" y="450" font-family="Arial" font-size="32" fill="#3FB572" text-anchor="middle" font-weight="bold">Youth Empowerment</text>
+  <text x="400" y="490" font-family="Arial" font-size="18" fill="#9CA3AF" text-anchor="middle">Building Tomorrow's Leaders</text>
+</svg>

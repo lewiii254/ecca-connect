@@ -1,0 +1,9 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#1A1F26"/>
+  <circle cx="300" cy="150" r="80" fill="#3FB572" opacity="0.3"/>
+  <rect x="220" y="180" width="160" height="120" rx="8" fill="#1F2937" stroke="#3FB572" stroke-width="2"/>
+  <line x1="250" y1="210" x2="350" y2="210" stroke="#3FB572" stroke-width="3"/>
+  <line x1="250" y1="240" x2="330" y2="240" stroke="#9CA3AF" stroke-width="2"/>
+  <line x1="250" y1="260" x2="340" y2="260" stroke="#9CA3AF" stroke-width="2"/>
+  <text x="300" y="360" font-family="Arial" font-size="24" fill="#3FB572" text-anchor="middle" font-weight="bold">Career Forum</text>
+</svg>

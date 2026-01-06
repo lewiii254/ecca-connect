@@ -106,6 +106,11 @@ const Index = () => {
               ECCA Ni Home
             </p>
 
+            {/* Motto */}
+            <p className="text-lg font-display font-medium text-primary mb-4 animate-fade-up stagger-2">
+              "Growth, Unity, Loyalty Above All Else"
+            </p>
+
             {/* Description */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-up stagger-3">
               United by purpose, driven by passion. We are the youth of Embu County — 

@@ -12,30 +12,35 @@ const Events = () => {
       date: "March 15, 2024",
       location: "Embu Town Hall",
       description: "A comprehensive career guidance event featuring industry experts, mentors, and networking opportunities for young professionals and students.",
+      image: "/images/event-career-forum.svg",
     },
     {
       title: "Environmental Conservation Day",
       date: "March 22, 2024",
       location: "Mt. Kenya Forest Reserve",
       description: "Join us for a day of tree planting, environmental education, and community bonding. We aim to plant 1,000 trees in a single day!",
+      image: "/images/event-tree-planting.svg",
     },
     {
       title: "Comrades Night Networking",
       date: "April 5, 2024",
       location: "Embu Sports Club",
       description: "An evening of networking, entertainment, and community building. Connect with fellow comrades in a relaxed, fun atmosphere.",
+      image: "/images/event-networking.svg",
     },
     {
       title: "Mental Health Awareness Workshop",
       date: "April 20, 2024",
       location: "ECCA Community Center",
       description: "A workshop dedicated to mental health awareness, featuring professional counselors and interactive sessions.",
+      image: "/images/youth-empowerment.svg",
     },
     {
       title: "Youth Entrepreneurship Summit",
       date: "May 10, 2024",
       location: "Embu University Auditorium",
       description: "Learn from successful entrepreneurs, pitch your business ideas, and connect with potential investors and mentors.",
+      image: "/images/event-career-forum.svg",
     },
   ];
 
@@ -46,6 +51,7 @@ const Events = () => {
       location: "Izaak Walton Hotel",
       description: "A spectacular celebration of ECCA's achievements, featuring awards, entertainment, and community recognition.",
       isPast: true,
+      image: "/images/event-networking.svg",
     },
     {
       title: "Tree Planting Drive - Phase 3",
@@ -53,6 +59,7 @@ const Events = () => {
       location: "Embu Green Belt",
       description: "Successfully planted over 2,000 trees in our ongoing reforestation initiative across Embu County.",
       isPast: true,
+      image: "/images/event-tree-planting.svg",
     },
     {
       title: "Youth Leadership Conference",
@@ -60,6 +67,7 @@ const Events = () => {
       location: "Embu Stadium",
       description: "A powerful gathering of young leaders from across the county, featuring inspiring speakers and workshops.",
       isPast: true,
+      image: "/images/leadership-networking.svg",
     },
     {
       title: "Community Clean-Up Day",
@@ -67,6 +75,7 @@ const Events = () => {
       location: "Embu Town Center",
       description: "Hundreds of comrades came together to clean and beautify our town center and public spaces.",
       isPast: true,
+      image: "/images/community-development.svg",
     },
   ];
 
