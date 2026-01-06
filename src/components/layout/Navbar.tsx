@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Users } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import eccaLogo from "@/assets/ecca-logo.jpg";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -23,9 +24,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:shadow-glow-green transition-all duration-300">
-              <Users className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img 
+              src={eccaLogo} 
+              alt="ECCA Logo" 
+              className="w-12 h-12 rounded-full object-cover group-hover:shadow-glow-green transition-all duration-300"
+            />
             <div className="hidden sm:block">
               <span className="font-display font-bold text-lg text-foreground">ECCA</span>
               <span className="text-xs text-muted-foreground block -mt-1">Ni Home</span>
