@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/shared/SectionHeading";
 import FeatureCard from "@/components/shared/FeatureCard";
 import EventCard from "@/components/shared/EventCard";
-import StatCard from "@/components/shared/StatCard";
+import AnimatedStatCard from "@/components/shared/AnimatedStatCard";
+import heroCommunity from "@/assets/hero-community.jpg";
 
 const Index = () => {
   const features = [
@@ -72,16 +73,14 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-hero" />
-        
         {/* Background Image */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0">
           <img 
-            src="/images/hero-bg.svg" 
-            alt="Background"
+            src={heroCommunity} 
+            alt="ECCA Community"
             className="w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background" />
         </div>
         
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
@@ -145,7 +144,7 @@ const Index = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-16 pt-16 border-t border-border animate-fade-up stagger-5">
               {stats.map((stat) => (
-                <StatCard key={stat.label} {...stat} />
+                <AnimatedStatCard key={stat.label} {...stat} />
               ))}
             </div>
           </div>

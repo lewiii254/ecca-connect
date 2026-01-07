@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const Join = () => {
   const { toast } = useToast();
@@ -45,22 +46,41 @@ const Join = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { error } = await supabase
+        .from("membership_applications")
+        .insert({
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
+          location: formData.location.trim(),
+          reason: formData.reason.trim(),
+        });
 
-    toast({
-      title: "Application Submitted! 🎉",
-      description: "Welcome to the ECCA family! We'll be in touch soon.",
-    });
+      if (error) throw error;
 
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      location: "",
-      reason: "",
-    });
-    setIsSubmitting(false);
+      toast({
+        title: "Application Submitted! 🎉",
+        description: "Welcome to the ECCA family! We'll be in touch soon.",
+      });
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        location: "",
+        reason: "",
+      });
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -48,20 +49,39 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { error } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        });
 
-    toast({
-      title: "Message Sent! ✉️",
-      description: "Thank you for reaching out. We'll get back to you soon.",
-    });
+      if (error) throw error;
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      toast({
+        title: "Message Sent! ✉️",
+        description: "Thank you for reaching out. We'll get back to you soon.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast({
+        title: "Message Failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
