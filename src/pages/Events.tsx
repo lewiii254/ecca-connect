@@ -1,7 +1,9 @@
 import { useState } from "react";
 import SectionHeading from "@/components/shared/SectionHeading";
 import EventCard from "@/components/shared/EventCard";
+import PhotoGallery from "@/components/shared/PhotoGallery";
 import { cn } from "@/lib/utils";
+import { Camera } from "lucide-react";
 
 const Events = () => {
   const [activeTab, setActiveTab] = useState<"upcoming" | "past">("upcoming");
@@ -154,6 +156,22 @@ const Events = () => {
               <p className="text-muted-foreground">No events to display</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Photo Gallery Section */}
+      <section className="py-16 lg:py-24 bg-card/50">
+        <div className="container px-4">
+          <SectionHeading
+            badge="Memories"
+            title="Photo Gallery"
+            description="Relive the memorable moments from our past events and activities."
+          />
+          <div className="flex items-center justify-center gap-2 text-muted-foreground mb-8">
+            <Camera className="w-5 h-5" />
+            <span className="text-sm">Click any image to view in fullscreen</span>
+          </div>
+          <PhotoGallery />
         </div>
       </section>
 
