@@ -6,6 +6,9 @@ import FeatureCard from "@/components/shared/FeatureCard";
 import EventCard from "@/components/shared/EventCard";
 import AnimatedStatCard from "@/components/shared/AnimatedStatCard";
 import heroCommunity from "@/assets/hero-community.jpg";
+import communityMarch from "@/assets/gallery/event-3.jpg";
+import youthLeaders from "@/assets/gallery/event-4.jpg";
+import communityEvent from "@/assets/gallery/event-1.jpg";
 
 const Index = () => {
   const features = [
@@ -222,24 +225,31 @@ const Index = () => {
               </Link>
             </div>
 
-            {/* Visual */}
+            {/* Visual - Real Photos Grid */}
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-border overflow-hidden relative">
-                <div className="absolute inset-0 opacity-30">
+              <div className="grid grid-cols-2 gap-4">
+                {/* Large featured image */}
+                <div className="col-span-2 aspect-video rounded-2xl overflow-hidden border border-border">
                   <img 
-                    src="/images/community-impact.svg" 
-                    alt="Community Impact"
-                    className="w-full h-full object-cover"
+                    src={communityMarch}
+                    alt="ECCA Community March"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center relative z-10">
-                    <div className="w-32 h-32 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-6 animate-float backdrop-blur-sm">
-                      <Users className="w-16 h-16 text-primary" />
-                    </div>
-                    <p className="font-display text-2xl font-bold text-foreground">ECCA Ni Home</p>
-                    <p className="text-muted-foreground mt-2">Unity • Purpose • Impact</p>
-                  </div>
+                {/* Two smaller images */}
+                <div className="aspect-square rounded-2xl overflow-hidden border border-border">
+                  <img 
+                    src={youthLeaders}
+                    alt="Youth Leaders"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="aspect-square rounded-2xl overflow-hidden border border-border">
+                  <img 
+                    src={communityEvent}
+                    alt="Community Event"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               </div>
               {/* Decorative elements */}
