@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
-// Import gallery images
+// Fallback images
 import event1 from "@/assets/gallery/event-1.jpg";
 import event2 from "@/assets/gallery/event-2.jpg";
 import event3 from "@/assets/gallery/event-3.jpg";
@@ -19,7 +20,7 @@ interface GalleryImage {
   caption?: string;
 }
 
-const galleryImages: GalleryImage[] = [
+const fallbackImages: GalleryImage[] = [
   { src: event1, alt: "ECCA Community Event", caption: "Comrades uniting at a community gathering" },
   { src: event2, alt: "ECCA Leadership", caption: "ECCA leadership coordinating activities" },
   { src: event3, alt: "Community March", caption: "Youth march for community awareness" },
@@ -34,6 +35,29 @@ const galleryImages: GalleryImage[] = [
 const PhotoGallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>(fallbackImages);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGalleryImages = async () => {
+      const { data, error } = await supabase
+        .from("gallery_images")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (!error && data && data.length > 0) {
+        const dbImages: GalleryImage[] = data.map(img => ({
+          src: img.image_url,
+          alt: img.title,
+          caption: img.description || img.title
+        }));
+        setGalleryImages(dbImages);
+      }
+      setLoading(false);
+    };
+
+    fetchGalleryImages();
+  }, []);
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -59,6 +83,14 @@ const PhotoGallery = () => {
     if (e.key === "ArrowLeft") goToPrevious();
     if (e.key === "ArrowRight") goToNext();
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <>
