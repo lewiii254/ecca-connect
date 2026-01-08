@@ -55,7 +55,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
                 <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0 mt-0.5" />
-                <span className="break-all">info@ecca.co.ke</span>
+                <span className="break-words">info@ecca.co.ke</span>
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
                 <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0 mt-0.5" />

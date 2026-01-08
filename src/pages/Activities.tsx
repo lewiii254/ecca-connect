@@ -90,7 +90,7 @@ const Activities = () => {
                 )}
                 style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
               >
-                <div className="grid md:grid-cols-[1fr,1.5fr] gap-0 md:gap-6">
+                <div className="grid md:grid-cols-[1fr,1.5fr] gap-4 md:gap-6">
                   {/* Image/Icon Section */}
                   <div className={cn(
                     "p-6 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden",

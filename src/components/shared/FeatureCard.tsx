@@ -32,7 +32,7 @@ const FeatureCard = ({
             : "bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground"
         )}
       >
-        <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
+        <Icon className="w-7 h-7 sm:w-7 sm:h-7" />
       </div>
       <h3 className="font-display font-semibold text-lg sm:text-xl text-foreground mb-2">
         {title}
