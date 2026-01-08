@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Users, TreePine, Lightbulb, Handshake, Heart, Calendar, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, Users, TreePine, Lightbulb, Handshake, Heart, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/shared/SectionHeading";
 import FeatureCard from "@/components/shared/FeatureCard";
@@ -9,8 +10,39 @@ import heroCommunity from "@/assets/hero-community.jpg";
 import communityMarch from "@/assets/gallery/event-3.jpg";
 import youthLeaders from "@/assets/gallery/event-4.jpg";
 import communityEvent from "@/assets/gallery/event-1.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { format } from "date-fns";
+
+interface Event {
+  id: string;
+  title: string;
+  description: string | null;
+  event_date: string;
+  location: string | null;
+  image_url: string | null;
+}
 
 const Index = () => {
+  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    const fetchUpcomingEvents = async () => {
+      const today = new Date().toISOString().split('T')[0];
+      const { data } = await supabase
+        .from("events")
+        .select("*")
+        .gte("event_date", today)
+        .order("event_date", { ascending: true })
+        .limit(3);
+
+      if (data) {
+        setUpcomingEvents(data);
+      }
+    };
+
+    fetchUpcomingEvents();
+  }, []);
+
   const features = [
     {
       icon: Users,
@@ -35,27 +67,6 @@ const Index = () => {
       title: "Leadership & Networking",
       description: "Building tomorrow's leaders through networking events and leadership training.",
       variant: "orange" as const,
-    },
-  ];
-
-  const upcomingEvents = [
-    {
-      title: "ECCA Youth Career Forum 2024",
-      date: "March 15, 2024",
-      location: "Embu Town Hall",
-      description: "A comprehensive career guidance event featuring industry experts and mentors.",
-    },
-    {
-      title: "Environmental Conservation Day",
-      date: "March 22, 2024",
-      location: "Mt. Kenya Forest Reserve",
-      description: "Join us for tree planting and environmental awareness activities.",
-    },
-    {
-      title: "Comrades Night Networking",
-      date: "April 5, 2024",
-      location: "Embu Sports Club",
-      description: "An evening of networking, entertainment, and community building.",
     },
   ];
 
@@ -279,17 +290,29 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingEvents.map((event, index) => (
-              <div
-                key={event.title}
-                className={`animate-fade-up stagger-${index + 1}`}
-                style={{ opacity: 0, animationFillMode: "forwards" }}
-              >
-                <EventCard {...event} />
-              </div>
-            ))}
-          </div>
+          {upcomingEvents.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No upcoming events scheduled. Check back soon!</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {upcomingEvents.map((event, index) => (
+                <div
+                  key={event.id}
+                  className={`animate-fade-up stagger-${index + 1}`}
+                  style={{ opacity: 0, animationFillMode: "forwards" }}
+                >
+                  <EventCard 
+                    title={event.title}
+                    date={format(new Date(event.event_date), "MMMM d, yyyy")}
+                    location={event.location || "TBA"}
+                    description={event.description || ""}
+                    image={event.image_url || undefined}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

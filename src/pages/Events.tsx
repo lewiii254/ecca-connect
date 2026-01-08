@@ -1,87 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHeading from "@/components/shared/SectionHeading";
 import EventCard from "@/components/shared/EventCard";
 import PhotoGallery from "@/components/shared/PhotoGallery";
 import { cn } from "@/lib/utils";
-import { Camera } from "lucide-react";
+import { Camera, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { format } from "date-fns";
+
+interface Event {
+  id: string;
+  title: string;
+  description: string | null;
+  event_date: string;
+  event_time: string | null;
+  location: string | null;
+  image_url: string | null;
+  is_upcoming: boolean | null;
+}
 
 const Events = () => {
   const [activeTab, setActiveTab] = useState<"upcoming" | "past">("upcoming");
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const upcomingEvents = [
-    {
-      title: "ECCA Youth Career Forum 2024",
-      date: "March 15, 2024",
-      location: "Embu Town Hall",
-      description: "A comprehensive career guidance event featuring industry experts, mentors, and networking opportunities for young professionals and students.",
-      image: "/images/event-career-forum.svg",
-    },
-    {
-      title: "Environmental Conservation Day",
-      date: "March 22, 2024",
-      location: "Mt. Kenya Forest Reserve",
-      description: "Join us for a day of tree planting, environmental education, and community bonding. We aim to plant 1,000 trees in a single day!",
-      image: "/images/event-tree-planting.svg",
-    },
-    {
-      title: "Comrades Night Networking",
-      date: "April 5, 2024",
-      location: "Embu Sports Club",
-      description: "An evening of networking, entertainment, and community building. Connect with fellow comrades in a relaxed, fun atmosphere.",
-      image: "/images/event-networking.svg",
-    },
-    {
-      title: "Mental Health Awareness Workshop",
-      date: "April 20, 2024",
-      location: "ECCA Community Center",
-      description: "A workshop dedicated to mental health awareness, featuring professional counselors and interactive sessions.",
-      image: "/images/youth-empowerment.svg",
-    },
-    {
-      title: "Youth Entrepreneurship Summit",
-      date: "May 10, 2024",
-      location: "Embu University Auditorium",
-      description: "Learn from successful entrepreneurs, pitch your business ideas, and connect with potential investors and mentors.",
-      image: "/images/event-career-forum.svg",
-    },
-  ];
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .order("event_date", { ascending: false });
 
-  const pastEvents = [
-    {
-      title: "ECCA Annual Gala 2023",
-      date: "December 15, 2023",
-      location: "Izaak Walton Hotel",
-      description: "A spectacular celebration of ECCA's achievements, featuring awards, entertainment, and community recognition.",
-      isPast: true,
-      image: "/images/event-networking.svg",
-    },
-    {
-      title: "Tree Planting Drive - Phase 3",
-      date: "November 25, 2023",
-      location: "Embu Green Belt",
-      description: "Successfully planted over 2,000 trees in our ongoing reforestation initiative across Embu County.",
-      isPast: true,
-      image: "/images/event-tree-planting.svg",
-    },
-    {
-      title: "Youth Leadership Conference",
-      date: "October 14, 2023",
-      location: "Embu Stadium",
-      description: "A powerful gathering of young leaders from across the county, featuring inspiring speakers and workshops.",
-      isPast: true,
-      image: "/images/leadership-networking.svg",
-    },
-    {
-      title: "Community Clean-Up Day",
-      date: "September 16, 2023",
-      location: "Embu Town Center",
-      description: "Hundreds of comrades came together to clean and beautify our town center and public spaces.",
-      isPast: true,
-      image: "/images/community-development.svg",
-    },
-  ];
+      if (!error && data) {
+        setEvents(data);
+      }
+      setLoading(false);
+    };
 
-  const events = activeTab === "upcoming" ? upcomingEvents : pastEvents;
+    fetchEvents();
+  }, []);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcomingEvents = events.filter(e => new Date(e.event_date) >= today);
+  const pastEvents = events.filter(e => new Date(e.event_date) < today);
+
+  const displayedEvents = activeTab === "upcoming" ? upcomingEvents : pastEvents;
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -121,7 +85,7 @@ const Events = () => {
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
-                Upcoming Events
+                Upcoming Events ({upcomingEvents.length})
               </button>
               <button
                 onClick={() => setActiveTab("past")}
@@ -132,28 +96,40 @@ const Events = () => {
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
-                Past Events
+                Past Events ({pastEvents.length})
               </button>
             </div>
           </div>
 
           {/* Events Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((event, index) => (
-              <div
-                key={event.title}
-                className="animate-fade-up"
-                style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
-              >
-                <EventCard {...event} />
-              </div>
-            ))}
-          </div>
-
-          {/* Empty State */}
-          {events.length === 0 && (
+          {loading ? (
+            <div className="flex items-center justify-center py-16">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : displayedEvents.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-muted-foreground">No events to display</p>
+              <p className="text-muted-foreground">
+                {activeTab === "upcoming" ? "No upcoming events scheduled." : "No past events to display."}
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayedEvents.map((event, index) => (
+                <div
+                  key={event.id}
+                  className="animate-fade-up"
+                  style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
+                >
+                  <EventCard
+                    title={event.title}
+                    date={format(new Date(event.event_date), "MMMM d, yyyy")}
+                    location={event.location || "TBA"}
+                    description={event.description || ""}
+                    image={event.image_url || undefined}
+                    isPast={activeTab === "past"}
+                  />
+                </div>
+              ))}
             </div>
           )}
         </div>

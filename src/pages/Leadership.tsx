@@ -1,18 +1,43 @@
+import { useEffect, useState } from "react";
 import SectionHeading from "@/components/shared/SectionHeading";
 import LeaderCard from "@/components/shared/LeaderCard";
-import { Quote } from "lucide-react";
+import { Quote, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+
+interface LeadershipMember {
+  id: string;
+  name: string;
+  position: string;
+  image_url: string | null;
+  bio: string | null;
+  email: string | null;
+  phone: string | null;
+}
 
 const Leadership = () => {
-  const leaders = [
-    { name: "John Mwangi", role: "Chairperson", image: "/images/leader-placeholder.svg" },
-    { name: "Grace Wanjiku", role: "Vice Chairperson", image: "/images/leader-placeholder.svg" },
-    { name: "Peter Njeru", role: "Secretary General", image: "/images/leader-placeholder.svg" },
-    { name: "Faith Wambui", role: "Treasurer", image: "/images/leader-placeholder.svg" },
-    { name: "David Muthomi", role: "Organizing Secretary", image: "/images/leader-placeholder.svg" },
-    { name: "Mary Njoki", role: "Communications Director", image: "/images/leader-placeholder.svg" },
-    { name: "James Kariuki", role: "Youth Coordinator", image: "/images/leader-placeholder.svg" },
-    { name: "Sarah Muthoni", role: "Environmental Lead", image: "/images/leader-placeholder.svg" },
-  ];
+  const [leaders, setLeaders] = useState<LeadershipMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLeadership = async () => {
+      const { data, error } = await supabase
+        .from("leadership_team")
+        .select("*")
+        .order("display_order", { ascending: true });
+
+      if (!error && data) {
+        setLeaders(data);
+      }
+      setLoading(false);
+    };
+
+    fetchLeadership();
+  }, []);
+
+  const chairperson = leaders.find(l => 
+    l.position.toLowerCase().includes("chairperson") || 
+    l.position.toLowerCase().includes("president")
+  );
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -46,17 +71,31 @@ const Leadership = () => {
             description="Our leadership team brings together diverse talents and perspectives to guide ECCA's mission."
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            {leaders.map((leader, index) => (
-              <div
-                key={leader.name}
-                className="animate-fade-up"
-                style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
-              >
-                <LeaderCard {...leader} />
-              </div>
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-16">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : leaders.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-muted-foreground">No leadership team members added yet.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+              {leaders.map((leader, index) => (
+                <div
+                  key={leader.id}
+                  className="animate-fade-up"
+                  style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
+                >
+                  <LeaderCard 
+                    name={leader.name} 
+                    role={leader.position} 
+                    image={leader.image_url || "/images/leader-placeholder.svg"} 
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -83,12 +122,26 @@ const Leadership = () => {
                 </blockquote>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <span className="font-display font-bold text-xl text-primary">JM</span>
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                    {chairperson?.image_url ? (
+                      <img 
+                        src={chairperson.image_url} 
+                        alt={chairperson.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="font-display font-bold text-xl text-primary">
+                        {chairperson?.name?.split(' ').map(n => n[0]).join('') || 'EC'}
+                      </span>
+                    )}
                   </div>
                   <div>
-                    <p className="font-display font-semibold text-foreground">John Mwangi</p>
-                    <p className="text-primary text-sm">Chairperson, ECCA</p>
+                    <p className="font-display font-semibold text-foreground">
+                      {chairperson?.name || "ECCA Leadership"}
+                    </p>
+                    <p className="text-primary text-sm">
+                      {chairperson?.position || "Chairperson, ECCA"}
+                    </p>
                   </div>
                 </div>
               </div>
