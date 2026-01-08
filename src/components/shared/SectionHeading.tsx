@@ -24,15 +24,15 @@ const SectionHeading = ({
       )}
     >
       {badge && (
-        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 animate-fade-up">
+        <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4 animate-fade-up">
           {badge}
         </span>
       )}
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 animate-fade-up stagger-1">
+      <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight animate-fade-up stagger-1">
         {title}
       </h2>
       {description && (
-        <p className="text-muted-foreground text-lg leading-relaxed animate-fade-up stagger-2">
+        <p className="text-muted-foreground text-base sm:text-lg leading-relaxed animate-fade-up stagger-2">
           {description}
         </p>
       )}
