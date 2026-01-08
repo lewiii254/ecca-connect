@@ -57,19 +57,19 @@ const Activities = () => {
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-secondary/5 rounded-full blur-3xl" />
         
-        <div className="container relative z-10 px-4">
+        <div className="container relative z-10 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6 animate-fade-up">
+            <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-secondary/10 text-secondary text-xs sm:text-sm font-medium mb-4 sm:mb-6 animate-fade-up">
               What We Do
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-fade-up stagger-1">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight animate-fade-up stagger-1">
               Activities & <span className="text-gradient-secondary">Impact</span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground animate-fade-up stagger-2">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 animate-fade-up stagger-2">
               From mentorship programs to environmental conservation, discover how ECCA 
               is making a difference in Embu County through action and engagement.
             </p>
@@ -78,22 +78,22 @@ const Activities = () => {
       </section>
 
       {/* Activities Grid */}
-      <section className="py-16 lg:py-24">
-        <div className="container px-4">
-          <div className="grid gap-8">
+      <section className="py-12 sm:py-16 lg:py-24">
+        <div className="container px-4 sm:px-6">
+          <div className="grid gap-6 sm:gap-8">
             {activities.map((activity, index) => (
               <div
                 key={activity.title}
                 className={cn(
-                  "group rounded-3xl bg-card border border-border overflow-hidden hover-lift transition-all duration-300 animate-fade-up",
+                  "group rounded-2xl sm:rounded-3xl bg-card border border-border overflow-hidden hover-lift transition-all duration-300 animate-fade-up",
                   activity.variant === "green" ? "hover-glow-green" : "hover-glow-orange"
                 )}
                 style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
               >
-                <div className="grid md:grid-cols-[1fr,1.5fr] gap-6">
+                <div className="grid md:grid-cols-[1fr,1.5fr] gap-4 md:gap-6">
                   {/* Image/Icon Section */}
                   <div className={cn(
-                    "p-8 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden",
+                    "p-6 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden",
                     activity.variant === "green" 
                       ? "bg-gradient-to-br from-primary/10 to-primary/5" 
                       : "bg-gradient-to-br from-secondary/10 to-secondary/5"
@@ -107,33 +107,33 @@ const Activities = () => {
                       />
                     </div>
                     <div className={cn(
-                      "relative z-10 w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300",
+                      "relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300",
                       activity.variant === "green"
                         ? "bg-primary/20 text-primary group-hover:bg-primary group-hover:text-primary-foreground"
                         : "bg-secondary/20 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground"
                     )}>
-                      <activity.icon className="w-10 h-10" />
+                      <activity.icon className="w-8 h-8 sm:w-10 sm:h-10" />
                     </div>
-                    <h3 className="relative z-10 font-display text-xl font-bold text-foreground">
+                    <h3 className="relative z-10 font-display text-lg sm:text-xl font-bold text-foreground">
                       {activity.title}
                     </h3>
                   </div>
 
                   {/* Content Section */}
-                  <div className="p-8 md:p-12 md:pl-0">
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <div className="p-6 sm:p-8 md:p-12 md:pl-0">
+                    <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                       {activity.description}
                     </p>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                       {activity.highlights.map((highlight) => (
                         <div
                           key={highlight}
                           className={cn(
-                            "flex items-center gap-2 text-sm",
+                            "flex items-center gap-2 text-xs sm:text-sm",
                             activity.variant === "green" ? "text-primary" : "text-secondary"
                           )}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
                           {highlight}
                         </div>
                       ))}
