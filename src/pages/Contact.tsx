@@ -94,19 +94,19 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background pt-20">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute top-1/4 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-0 w-64 h-64 md:w-80 md:h-80 bg-primary/5 rounded-full blur-3xl" />
         
-        <div className="container relative z-10 px-4">
+        <div className="container relative z-10 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+            <span className="inline-block px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 animate-fade-up">
               Get in Touch
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-fade-up stagger-1">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6 leading-tight animate-fade-up stagger-1">
               Contact <span className="text-gradient-primary">ECCA</span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground animate-fade-up stagger-2">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 animate-fade-up stagger-2">
               Have questions, ideas, or want to partner with us? We'd love to hear from you. 
               Reach out and let's start a conversation.
             </p>
@@ -115,31 +115,31 @@ const Contact = () => {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16 lg:py-24 bg-card">
-        <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="py-12 sm:py-16 lg:py-24 bg-card">
+        <div className="container px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {contactInfo.map((info, index) => (
               <div
                 key={info.title}
                 className={cn(
-                  "p-6 rounded-2xl bg-background border border-border text-center hover-lift transition-all duration-300 animate-fade-up",
+                  "p-5 sm:p-6 rounded-xl sm:rounded-2xl bg-background border border-border text-center hover-lift transition-all duration-300 animate-fade-up",
                   info.variant === "green" ? "hover-glow-green" : "hover-glow-orange"
                 )}
                 style={{ opacity: 0, animationFillMode: "forwards", animationDelay: `${index * 0.1}s` }}
               >
                 <div
                   className={cn(
-                    "w-14 h-14 rounded-xl mx-auto flex items-center justify-center mb-4",
+                    "w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl mx-auto flex items-center justify-center mb-3 sm:mb-4",
                     info.variant === "green" ? "bg-primary/10 text-primary" : "bg-secondary/10 text-secondary"
                   )}
                 >
-                  <info.icon className="w-7 h-7" />
+                  <info.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <h4 className="font-display font-semibold text-lg text-foreground mb-2">
+                <h4 className="font-display font-semibold text-base sm:text-lg text-foreground mb-2">
                   {info.title}
                 </h4>
                 {info.details.map((detail) => (
-                  <p key={detail} className="text-muted-foreground text-sm">
+                  <p key={detail} className="text-muted-foreground text-xs sm:text-sm">
                     {detail}
                   </p>
                 ))}
@@ -150,22 +150,22 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Social */}
-      <section className="py-16 lg:py-24">
-        <div className="container px-4">
-          <div className="grid lg:grid-cols-[1fr,400px] gap-12 lg:gap-16">
+      <section className="py-12 sm:py-16 lg:py-24">
+        <div className="container px-4 sm:px-6">
+          <div className="grid lg:grid-cols-[1fr,400px] gap-8 sm:gap-12 lg:gap-16">
             {/* Contact Form */}
             <div>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-2">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Send Us a Message
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
                 Fill out the form and our team will get back to you within 24 hours.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-foreground">
+                    <label htmlFor="name" className="text-xs sm:text-sm font-medium text-foreground">
                       Your Name *
                     </label>
                     <Input
@@ -175,11 +175,11 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="h-12 bg-card border-border focus:border-primary"
+                      className="h-11 sm:h-12 bg-card border-border focus:border-primary text-sm sm:text-base"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">
+                    <label htmlFor="email" className="text-xs sm:text-sm font-medium text-foreground">
                       Email Address *
                     </label>
                     <Input
@@ -190,13 +190,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="h-12 bg-card border-border focus:border-primary"
+                      className="h-11 sm:h-12 bg-card border-border focus:border-primary text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium text-foreground">
+                  <label htmlFor="subject" className="text-xs sm:text-sm font-medium text-foreground">
                     Subject *
                   </label>
                   <Input
@@ -206,12 +206,12 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="h-12 bg-card border-border focus:border-primary"
+                    className="h-11 sm:h-12 bg-card border-border focus:border-primary text-sm sm:text-base"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-foreground">
+                  <label htmlFor="message" className="text-xs sm:text-sm font-medium text-foreground">
                     Message *
                   </label>
                   <Textarea
@@ -222,7 +222,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="bg-card border-border focus:border-primary resize-none"
+                    className="bg-card border-border focus:border-primary resize-none text-sm sm:text-base"
                   />
                 </div>
 
