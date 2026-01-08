@@ -131,7 +131,7 @@ const Index = () => {
 
             {/* Motto */}
             <p className="text-base sm:text-lg font-display font-medium text-primary mb-3 sm:mb-4 px-4 animate-fade-up stagger-2">
-              "Growth, Unity, Loyalty Above All Else"
+              "Growing into greatness as a team"
             </p>
 
             {/* Description */}

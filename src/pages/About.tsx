@@ -96,7 +96,7 @@ const About = () => {
                     </div>
                     <p className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-2">ECCA</p>
                     <p className="text-secondary font-semibold text-base sm:text-lg">Ni Home</p>
-                    <p className="text-xs sm:text-sm text-primary font-medium italic mt-2">"Growth, Unity, Loyalty Above All Else"</p>
+                    <p className="text-xs sm:text-sm text-primary font-medium italic mt-2">"Growing into greatness as a team"</p>
                     <p className="text-muted-foreground text-xs sm:text-sm mt-3 sm:mt-4">Established 2020</p>
                   </div>
                 </div>
