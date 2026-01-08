@@ -24,7 +24,7 @@ const Footer = () => {
               Empowering Embu County youth through unity, leadership, and community development.
             </p>
             <p className="text-xs text-primary font-medium italic">
-              "Growth, Unity, Loyalty Above All Else"
+              "Growing into greatness as a team"
             </p>
           </div>
 
