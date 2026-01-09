@@ -7,7 +7,7 @@ import FeatureCard from "@/components/shared/FeatureCard";
 import EventCard from "@/components/shared/EventCard";
 import AnimatedStatCard from "@/components/shared/AnimatedStatCard";
 import heroCommunity from "@/assets/hero-community.jpg";
-import communityMarch from "@/assets/gallery/event-3.jpg";
+import communityMarch from "@/assets/gallery/image2.jpg";
 import youthLeaders from "@/assets/gallery/event-4.jpg";
 import communityEvent from "@/assets/gallery/event-1.jpg";
 import { supabase } from "@/integrations/supabase/client";
