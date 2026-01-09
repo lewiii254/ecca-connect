@@ -64,7 +64,10 @@ const Events = () => {
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 animate-fade-up stagger-2">
               From career forums to community celebrations, ECCA hosts a variety of events 
-              that bring youth together for growth, connection, and impact.
+              that bring youth together for growth, connection, and impact. Each event is 
+              carefully designed to provide value, create memorable experiences, and strengthen 
+              our community bonds. Whether you're looking to learn, network, or simply have fun, 
+              ECCA events offer something for everyone.
             </p>
           </div>
         </div>
@@ -141,7 +144,7 @@ const Events = () => {
           <SectionHeading
             badge="Memories"
             title="Photo Gallery"
-            description="Relive the memorable moments from our past events and activities."
+            description="Relive the memorable moments from our past events and activities. Each photo captures the spirit of ECCA—youth united in purpose, celebrating together, and creating lasting impact. From tree planting initiatives to gala nights, our gallery showcases the vibrant energy and diverse experiences that make ECCA a unique community."
           />
           <div className="flex items-center justify-center gap-2 text-muted-foreground mb-6 sm:mb-8">
             <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -160,12 +163,28 @@ const Events = () => {
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 px-4">
               Have an idea for a community event or activity? ECCA supports members 
-              who want to organize events that align with our mission. Reach out to 
-              our events team to get started!
+              who want to organize events that align with our mission of youth empowerment, 
+              community development, and social impact. Whether it's a workshop, fundraiser, 
+              sports tournament, or awareness campaign, we provide resources, guidance, and 
+              promotional support to bring your vision to life. Reach out to our events team 
+              to get started on planning your next impactful event!
             </p>
-            <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm sm:text-base">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Contact: events@ecca.co.ke
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm sm:text-base">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Contact: events@ecca.co.ke
+              </div>
+              <div className="text-sm text-muted-foreground mt-4">
+                <p>We welcome event proposals for:</p>
+                <ul className="list-disc list-inside mt-2 space-y-1 text-left max-w-2xl mx-auto">
+                  <li>Educational workshops and seminars</li>
+                  <li>Community service projects</li>
+                  <li>Social networking events</li>
+                  <li>Sports and recreational activities</li>
+                  <li>Fundraising initiatives</li>
+                  <li>Awareness campaigns</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
