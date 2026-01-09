@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ArrowRight, Users, TreePine, Lightbulb, Handshake, Heart, ChevronRight } from "lucide-react";
+import { ArrowRight, Users, TreePine, Lightbulb, Handshake, Heart, ChevronRight, Play, Calendar, MapPin, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/shared/SectionHeading";
 import FeatureCard from "@/components/shared/FeatureCard";
@@ -12,6 +12,7 @@ import youthLeaders from "@/assets/gallery/event-4.jpg";
 import communityEvent from "@/assets/gallery/event-1.jpg";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface Event {
   id: string;
@@ -22,25 +23,53 @@ interface Event {
   image_url: string | null;
 }
 
+interface Leader {
+  id: string;
+  name: string;
+  position: string;
+  image_url: string | null;
+}
+
 const Index = () => {
   const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
+  const [leaders, setLeaders] = useState<Leader[]>([]);
+  const [membersCount, setMembersCount] = useState(0);
 
   useEffect(() => {
-    const fetchUpcomingEvents = async () => {
+    const fetchData = async () => {
+      // Fetch upcoming events
       const today = new Date().toISOString().split('T')[0];
-      const { data } = await supabase
+      const { data: eventsData } = await supabase
         .from("events")
         .select("*")
         .gte("event_date", today)
         .order("event_date", { ascending: true })
         .limit(3);
 
-      if (data) {
-        setUpcomingEvents(data);
+      if (eventsData) {
+        setUpcomingEvents(eventsData);
       }
+
+      // Fetch leadership team for testimonials
+      const { data: leadersData } = await supabase
+        .from("leadership_team")
+        .select("id, name, position, image_url")
+        .order("display_order", { ascending: true })
+        .limit(3);
+
+      if (leadersData) {
+        setLeaders(leadersData);
+      }
+
+      // Get members count
+      const { count } = await supabase
+        .from("membership_applications")
+        .select("id", { count: "exact", head: true });
+      
+      setMembersCount(count || 0);
     };
 
-    fetchUpcomingEvents();
+    fetchData();
   }, []);
 
   const features = [
@@ -71,7 +100,7 @@ const Index = () => {
   ];
 
   const stats = [
-    { number: "500+", label: "Active Members" },
+    { number: `${500 + membersCount}+`, label: "Active Members" },
     { number: "50+", label: "Events Hosted" },
     { number: "10K+", label: "Trees Planted" },
     { number: "20+", label: "Community Projects" },
@@ -81,6 +110,24 @@ const Index = () => {
     { icon: Heart, title: "Belonging", text: "Be part of a family that truly cares about your growth and success." },
     { icon: Users, title: "Network", text: "Connect with like-minded youth across Embu County and beyond." },
     { icon: Lightbulb, title: "Growth", text: "Access opportunities for personal and professional development." },
+  ];
+
+  const testimonials = [
+    {
+      quote: "ECCA changed my life. I found mentors, friends, and a purpose that drives me every day.",
+      author: "Youth Member",
+      role: "Community Leader"
+    },
+    {
+      quote: "Being part of ECCA has given me opportunities I never thought possible. The network is incredible.",
+      author: "Active Member",
+      role: "Environmental Advocate"
+    },
+    {
+      quote: "ECCA is more than an association – it's a family. Together, we're building a better Embu County.",
+      author: "Youth Leader",
+      role: "Mentorship Program Lead"
+    }
   ];
 
   return (
@@ -316,8 +363,44 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-12 sm:py-16 lg:py-24 xl:py-32">
+        <div className="container px-4 sm:px-6">
+          <SectionHeading
+            badge="Testimonials"
+            title="What Our Members Say"
+            description="Hear from the youth who have experienced the ECCA difference firsthand."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 sm:mt-12">
+            {testimonials.map((testimonial, index) => (
+              <Card 
+                key={index}
+                className="relative overflow-hidden hover-lift border-border bg-card"
+              >
+                <CardContent className="p-6 sm:p-8">
+                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                  <p className="text-muted-foreground italic mb-6 text-sm sm:text-base leading-relaxed">
+                    "{testimonial.quote}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Star className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm">{testimonial.author}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-24 xl:py-32 relative overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-24 xl:py-32 relative overflow-hidden bg-card">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
         
@@ -343,6 +426,24 @@ const Index = () => {
                 </Button>
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-12 sm:py-16 lg:py-20 border-t border-border">
+        <div className="container px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+              Trusted By Our Community Partners
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 lg:gap-16 opacity-60">
+            {["Embu County Government", "Local NGOs", "Community Groups", "Youth Organizations"].map((partner) => (
+              <span key={partner} className="text-muted-foreground text-sm sm:text-base font-medium">
+                {partner}
+              </span>
+            ))}
           </div>
         </div>
       </section>
