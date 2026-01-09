@@ -21,19 +21,19 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Location",
-      details: ["Embu County, Kenya", "Eastern Region"],
+      details: ["Embu County, Kenya", "Eastern Region", "Serving all sub-counties"],
       variant: "green" as const,
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@ecca.co.ke", "support@ecca.co.ke"],
+      details: ["info@ecca.co.ke", "support@ecca.co.ke", "partnerships@ecca.co.ke"],
       variant: "orange" as const,
     },
     {
       icon: Phone,
       title: "Phone",
-      details: ["+254 700 000 000", "+254 711 000 000"],
+      details: ["+254 700 000 000", "+254 711 000 000", "Available 24/7"],
       variant: "green" as const,
     },
   ];
@@ -108,7 +108,10 @@ const Contact = () => {
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 animate-fade-up stagger-2">
               Have questions, ideas, or want to partner with us? We'd love to hear from you. 
-              Reach out and let's start a conversation.
+              Reach out and let's start a conversation. Whether you're interested in membership,
+              partnerships, volunteering, or simply want to learn more about what we do, our team
+              is ready to connect with you. Your feedback, suggestions, and inquiries help us 
+              serve our community better.
             </p>
           </div>
         </div>
@@ -159,7 +162,8 @@ const Contact = () => {
                 Send Us a Message
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
-                Fill out the form and our team will get back to you within 24 hours.
+                Fill out the form and our team will get back to you within 24 hours. We value 
+                every message and strive to provide thoughtful, helpful responses to all inquiries.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
@@ -252,7 +256,8 @@ const Contact = () => {
                   Follow Us
                 </h3>
                 <p className="text-muted-foreground text-sm mb-6">
-                  Stay connected and follow our journey on social media.
+                  Stay connected and follow our journey on social media. Get updates on events, 
+                  programs, success stories, and opportunities to engage with our community.
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   {socialLinks.map((social) => (
@@ -295,7 +300,9 @@ const Contact = () => {
                   Need Quick Help?
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
-                  For urgent matters, reach us directly via WhatsApp.
+                  For urgent matters or quick questions, reach us directly via WhatsApp. 
+                  Our team is available to provide immediate assistance and answer your queries 
+                  in real-time.
                 </p>
                 <Button variant="outline" className="w-full">
                   Chat on WhatsApp

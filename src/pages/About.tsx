@@ -7,22 +7,22 @@ const About = () => {
     {
       icon: Users,
       title: "Unity",
-      description: "We stand together as one family, united by our shared vision for Embu County.",
+      description: "We stand together as one family, united by our shared vision for Embu County. Through collective action, we achieve extraordinary results.",
     },
     {
       icon: Heart,
       title: "Inclusivity",
-      description: "Every voice matters. We welcome all young people regardless of background.",
+      description: "Every voice matters. We welcome all young people regardless of background, creating a diverse and vibrant community where everyone belongs.",
     },
     {
       icon: Sparkles,
       title: "Youth Leadership",
-      description: "We believe in empowering young people to lead and create change.",
+      description: "We believe in empowering young people to lead and create change. Our members are tomorrow's leaders, equipped with skills, confidence, and vision.",
     },
     {
       icon: Shield,
       title: "Community Impact",
-      description: "Everything we do is aimed at creating lasting positive change in our communities.",
+      description: "Everything we do is aimed at creating lasting positive change in our communities. We measure our success by the lives we transform and the hope we inspire.",
     },
   ];
 
@@ -44,6 +44,8 @@ const About = () => {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 animate-fade-up stagger-2">
               The Embu County Comrades Association (ECCA) is a vibrant youth-led organization 
               dedicated to empowering young people and transforming communities across Embu County.
+              We are a movement of passionate, purpose-driven youth committed to creating lasting 
+              positive change through unity, service, and innovation.
             </p>
           </div>
         </div>
@@ -65,16 +67,22 @@ const About = () => {
                   ECCA was born from a simple but powerful idea: that the youth of Embu County, 
                   when united, can achieve extraordinary things. We recognized that young people 
                   needed a platform — not just to voice their concerns, but to take action and 
-                  create real change.
+                  create real change. In a world where youth often feel overlooked, ECCA stands 
+                  as a testament to the power of organized, purpose-driven action.
                 </p>
                 <p>
-                  Founded by a group of passionate young leaders, ECCA has grown from a small 
+                  Founded by a group of passionate young leaders in 2020, ECCA has grown from a small 
                   gathering of friends into a movement that spans the entire county. Our journey 
                   is a testament to what happens when youth come together with purpose and determination.
+                  We've evolved from informal meetups to a structured organization with clear vision,
+                  strong leadership, and measurable impact across multiple sectors.
                 </p>
                 <p>
                   Today, ECCA stands as a beacon of hope and unity, showing that the future of 
-                  Embu County is in capable, caring hands.
+                  Embu County is in capable, caring hands. With over 500 active members and growing,
+                  we continue to expand our reach, deepen our impact, and inspire the next generation
+                  of change-makers. Our legacy is not just in what we've accomplished, but in the
+                  lives we've transformed and the communities we've strengthened.
                 </p>
               </div>
             </div>

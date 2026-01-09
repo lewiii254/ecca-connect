@@ -57,6 +57,8 @@ const Leadership = () => {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4 animate-fade-up stagger-2">
               Dedicated young leaders committed to serving the youth of Embu County 
               with passion, integrity, and unwavering commitment to our shared vision.
+              Our leadership team represents diverse backgrounds, skills, and perspectives,
+              united in the mission to empower and transform our community.
             </p>
           </div>
         </div>
@@ -68,7 +70,7 @@ const Leadership = () => {
           <SectionHeading
             badge="Executive Committee"
             title="Leadership Structure"
-            description="Our leadership team brings together diverse talents and perspectives to guide ECCA's mission."
+            description="Our leadership team brings together diverse talents and perspectives to guide ECCA's mission. Each member is elected based on their demonstrated commitment to service, proven leadership abilities, and vision for youth empowerment. Together, they form a dynamic team that drives our organization forward with strategic planning, innovative programs, and unwavering dedication to our community."
           />
 
           {loading ? (
@@ -118,7 +120,10 @@ const Leadership = () => {
                   "To every young person in Embu County: ECCA is your home. Here, your voice 
                   matters, your dreams are valid, and your potential is limitless. Together, 
                   we are building more than an organization — we are building a legacy of unity, 
-                  service, and transformative impact that will echo through generations."
+                  service, and transformative impact that will echo through generations. Every 
+                  member brings unique talents and perspectives that strengthen our collective 
+                  mission. We invite you to join us in creating the Embu County we envision: 
+                  prosperous, inclusive, and led by empowered youth who dare to dream and act."
                 </blockquote>
 
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -162,11 +167,14 @@ const Leadership = () => {
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               ECCA welcomes passionate young leaders who want to make a difference. 
-              Leadership opportunities are available for members who demonstrate commitment 
-              and a desire to serve.
+              Leadership opportunities are available for members who demonstrate commitment, 
+              integrity, and a genuine desire to serve our community. Our leadership development 
+              program prepares emerging leaders with the skills, experience, and network needed 
+              to excel in both ECCA and beyond. Whether you aspire to executive positions or 
+              want to lead specific initiatives, there's a place for you in our leadership pipeline.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {["Integrity", "Service", "Vision", "Dedication"].map((value) => (
+              {["Integrity", "Service", "Vision", "Dedication", "Innovation", "Collaboration"].map((value) => (
                 <span
                   key={value}
                   className="px-6 py-2 rounded-full bg-card border border-border text-muted-foreground"
