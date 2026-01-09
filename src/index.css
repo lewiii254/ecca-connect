@@ -5,70 +5,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @layer base {
-  /* Light theme - clean and professional with ECCA colors */
+  /* Light theme - vibrant and professional with ECCA colors */
   :root {
-    --background: 0 0% 100%;
+    --background: 60 10% 98%;
     --foreground: 220 20% 12%;
 
-    --card: 210 20% 98%;
+    --card: 60 10% 96%;
     --card-foreground: 220 20% 12%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 12%;
 
-    --primary: 142 71% 40%;
+    --primary: 142 71% 35%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 38 92% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 60 10% 94%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 142 71% 40%;
+    --accent: 142 71% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 90%;
-    --input: 220 13% 90%;
-    --ring: 142 71% 40%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 142 71% 35%;
 
     --radius: 1rem;
 
     /* Custom ECCA colors - Light mode */
-    --ecca-green: 142 71% 40%;
-    --ecca-green-glow: 142 71% 50%;
+    --ecca-green: 142 71% 35%;
+    --ecca-green-glow: 142 71% 45%;
     --ecca-gold: 38 92% 50%;
     --ecca-gold-glow: 38 92% 60%;
     --ecca-orange: 28 100% 55%;
     --ecca-orange-glow: 28 100% 65%;
     --ecca-dark: 220 20% 12%;
-    --ecca-card: 210 20% 98%;
-    --ecca-card-hover: 210 20% 95%;
+    --ecca-card: 60 10% 96%;
+    --ecca-card-hover: 60 10% 93%;
 
-    /* Gradients - Light mode */
-    --gradient-primary: linear-gradient(135deg, hsl(142 71% 40%) 0%, hsl(142 71% 30%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(38 92% 40%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(210 20% 99%) 0%, hsl(210 20% 96%) 100%);
+    /* Gradients - Light mode - enhanced for hero */
+    --gradient-primary: linear-gradient(135deg, hsl(142 71% 35%) 0%, hsl(142 71% 28%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(38 92% 42%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(142 71% 35% / 0.08) 0%, hsl(38 92% 50% / 0.05) 50%, hsl(60 10% 98%) 100%);
+    --gradient-hero-radial: radial-gradient(ellipse at top, hsl(142 71% 35% / 0.12) 0%, transparent 60%);
+    --gradient-card: linear-gradient(145deg, hsl(60 10% 99%) 0%, hsl(60 10% 95%) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(142 71% 35% / 0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, hsl(38 92% 50% / 0.12) 0px, transparent 50%), radial-gradient(at 0% 50%, hsl(142 71% 35% / 0.08) 0px, transparent 50%);
 
-    /* Shadows - Light mode */
-    --shadow-glow-green: 0 0 40px hsl(142 71% 40% / 0.2);
-    --shadow-glow-gold: 0 0 40px hsl(38 92% 50% / 0.2);
-    --shadow-glow-orange: 0 0 40px hsl(28 100% 55% / 0.2);
-    --shadow-card: 0 4px 24px hsl(220 20% 12% / 0.08);
-    --shadow-card-hover: 0 8px 32px hsl(220 20% 12% / 0.12);
+    /* Shadows - Light mode - enhanced */
+    --shadow-glow-green: 0 0 60px hsl(142 71% 35% / 0.25);
+    --shadow-glow-gold: 0 0 60px hsl(38 92% 50% / 0.25);
+    --shadow-glow-orange: 0 0 60px hsl(28 100% 55% / 0.25);
+    --shadow-card: 0 4px 24px hsl(220 20% 12% / 0.06), 0 1px 3px hsl(220 20% 12% / 0.04);
+    --shadow-card-hover: 0 12px 40px hsl(220 20% 12% / 0.1), 0 4px 12px hsl(220 20% 12% / 0.06);
+    --shadow-hero-button: 0 8px 30px hsl(142 71% 35% / 0.35);
 
-    --sidebar-background: 210 20% 98%;
+    --sidebar-background: 60 10% 96%;
     --sidebar-foreground: 220 20% 12%;
-    --sidebar-primary: 142 71% 40%;
+    --sidebar-primary: 142 71% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 20% 95%;
+    --sidebar-accent: 60 10% 93%;
     --sidebar-accent-foreground: 220 20% 12%;
-    --sidebar-border: 220 13% 90%;
-    --sidebar-ring: 142 71% 40%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 142 71% 35%;
   }
 
   /* Dark theme - original ECCA dark aesthetic */
@@ -166,6 +169,14 @@
     background: var(--gradient-hero);
   }
 
+  .bg-gradient-hero-radial {
+    background: var(--gradient-hero-radial);
+  }
+
+  .bg-gradient-mesh {
+    background: var(--gradient-mesh);
+  }
+
   .bg-gradient-card {
     background: var(--gradient-card);
   }
@@ -182,8 +193,33 @@
     box-shadow: var(--shadow-glow-gold);
   }
 
+  .shadow-hero-button {
+    box-shadow: var(--shadow-hero-button);
+  }
+
   .glass-effect {
     @apply backdrop-blur-xl bg-card/60 border border-border/50;
+  }
+
+  .glass-effect-strong {
+    @apply backdrop-blur-2xl bg-background/80 border border-border/60;
+  }
+
+  .light-hero-overlay {
+    background: linear-gradient(180deg, 
+      hsl(var(--background)) 0%, 
+      hsl(var(--background) / 0.85) 20%,
+      hsl(var(--background) / 0.7) 50%,
+      hsl(var(--background)) 100%
+    );
+  }
+
+  .dark .light-hero-overlay {
+    background: linear-gradient(180deg, 
+      hsl(var(--background) / 0.9) 0%, 
+      hsl(var(--background) / 0.8) 50%,
+      hsl(var(--background)) 100%
+    );
   }
 }
 
